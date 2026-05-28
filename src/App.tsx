@@ -12,7 +12,7 @@ const tabs = [
   { id: 'tab-3', title: 'Tab 3', content: 'Some text 3' },
 ];
 
-export const App = () => (
+export const App = () => (  
   <>
     {/* Also requires <html class="has-navbar-fixed-top"> */}
     <nav
