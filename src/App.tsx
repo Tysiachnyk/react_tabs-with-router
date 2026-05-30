@@ -14,6 +14,9 @@ const tabs = [
   { id: 'tab-3', title: 'Tab 3', content: 'Some text 3' },
 ];
 
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('navbar-item', { 'is-active': isActive });
+
 export const App = () => (
   <>
     {/* Also requires <html class="has-navbar-fixed-top"> */}
@@ -23,21 +26,10 @@ export const App = () => (
     >
       <div className="container">
         <div className="navbar-brand">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => {
-              return classNames('navbar-item', { 'is-active': isActive });
-            }}
-          >
+          <NavLink to="/" end className={getLinkClass}>
             Home
           </NavLink>
-          <NavLink
-            to="/tabs"
-            className={({ isActive }) => {
-              return classNames('navbar-item', { 'is-active': isActive });
-            }}
-          >
+          <NavLink to="/tabs" className={getLinkClass}>
             Tabs
           </NavLink>
         </div>
