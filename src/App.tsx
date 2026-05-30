@@ -5,6 +5,8 @@ import './App.scss';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { TabsPage } from './components/TabsPage/TabsPage';
+import { HomePage } from './components/HomePage/HomePage';
+import { ErrorPage } from './components/ErrorPage/ErrorPage';
 
 const tabs = [
   { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
@@ -12,7 +14,7 @@ const tabs = [
   { id: 'tab-3', title: 'Tab 3', content: 'Some text 3' },
 ];
 
-export const App = () => (  
+export const App = () => (
   <>
     {/* Also requires <html class="has-navbar-fixed-top"> */}
     <nav
@@ -45,19 +47,13 @@ export const App = () => (
     <div className="section">
       <div className="container">
         <Routes>
-          <Route
-            path="/"
-            element={<h1 className="title">Home page</h1>}
-          ></Route>
+          <Route path="/" element={<HomePage />}></Route>
           <Route path="tabs">
             <Route index element={<TabsPage tabs={tabs} />}></Route>
             <Route path=":tabId" element={<TabsPage tabs={tabs} />} />
           </Route>
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route
-            path="*"
-            element={<h1 className="title">Page not found</h1>}
-          ></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
       </div>
     </div>
